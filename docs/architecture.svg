@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 700" width="1180" height="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b8b96"/>
+    </marker>
+    <style>
+      .h    { font-size: 27px; font-weight: 700; fill: #14141a; }
+      .sub  { font-size: 14.5px; fill: #6b6b76; }
+      .stat { font-size: 15px; font-weight: 600; fill: #14141a; }
+      .box-t{ font-size: 16px; font-weight: 700; fill: #14141a; }
+      .box-s{ font-size: 12.5px; fill: #5f5f6b; }
+      .li   { font-size: 13px; fill: #35353f; }
+      .tag  { font-size: 11px; font-weight: 700; letter-spacing: .08em; fill: #6b6b76; }
+      .ci   { font-size: 13.5px; fill: #35353f; }
+      .num  { font-size: 22px; font-weight: 700; fill: #14141a; }
+    </style>
+  </defs>
+
+  <rect width="1180" height="700" fill="#fbfbfc"/>
+
+  <!-- header -->
+  <text x="56" y="62" class="h">Test architecture</text>
+  <text x="56" y="88" class="sub">One suite, two layers, one CI gate — the shape I deliver into a client codebase.</text>
+
+  <!-- stat strip -->
+  <g transform="translate(56,112)">
+    <rect width="1068" height="60" rx="10" fill="#ffffff" stroke="#e3e3e9"/>
+    <text x="28"  y="27" class="num">50</text><text x="28"  y="47" class="box-s">tests</text>
+    <text x="188" y="27" class="num">6.1s</text><text x="188" y="47" class="box-s">full run</text>
+    <text x="348" y="27" class="num">2.2s</text><text x="348" y="47" class="box-s">API, parallel</text>
+    <text x="536" y="27" class="num">0</text><text x="536" y="47" class="box-s">flakes in 5 consecutive runs</text>
+    <text x="860" y="27" class="num">0</text><text x="860" y="47" class="box-s">sleep() calls in the suite</text>
+    <line x1="160" y1="14" x2="160" y2="46" stroke="#e3e3e9"/>
+    <line x1="320" y1="14" x2="320" y2="46" stroke="#e3e3e9"/>
+    <line x1="508" y1="14" x2="508" y2="46" stroke="#e3e3e9"/>
+    <line x1="832" y1="14" x2="832" y2="46" stroke="#e3e3e9"/>
+  </g>
+
+  <!-- column 1: fixtures -->
+  <g transform="translate(56,212)">
+    <text class="tag" y="-10">FIXTURE LAYER</text>
+    <rect width="286" height="216" rx="12" fill="#ffffff" stroke="#d6d6de"/>
+    <text x="22" y="34" class="box-t">conftest.py</text>
+    <text x="22" y="55" class="box-s">Everything a test needs, nothing it doesn't</text>
+    <line x1="22" y1="70" x2="264" y2="70" stroke="#ececf1"/>
+    <text x="22" y="96"  class="li">▸ Live server — started once per session</text>
+    <text x="22" y="122" class="li">▸ Clean state — reset before every test</text>
+    <text x="22" y="148" class="li">▸ Registered account + bearer token</text>
+    <text x="22" y="174" class="li">▸ Authenticated HTTP client</text>
+    <text x="22" y="200" class="box-s">Free port per worker → safe under xdist</text>
+  </g>
+
+  <!-- column 2: two suites -->
+  <g transform="translate(438,212)">
+    <text class="tag" y="-10">TEST LAYERS</text>
+
+    <rect width="300" height="98" rx="12" fill="#ffffff" stroke="#d6d6de"/>
+    <text x="22" y="32" class="box-t">API suite · 39 tests</text>
+    <text x="22" y="53" class="box-s">pytest + httpx, run in parallel</text>
+    <text x="22" y="76" class="li">auth · CRUD · validation · isolation</text>
+
+    <rect y="118" width="300" height="98" rx="12" fill="#ffffff" stroke="#d6d6de"/>
+    <text x="22" y="150" class="box-t">Browser suite · 11 tests</text>
+    <text x="22" y="171" class="box-s">Playwright, page objects</text>
+    <text x="22" y="194" class="li">sign-in journey · task workflow · session</text>
+  </g>
+
+  <!-- column 3: SUT -->
+  <g transform="translate(834,212)">
+    <text class="tag" y="-10">SYSTEM UNDER TEST</text>
+    <rect width="290" height="216" rx="12" fill="#ffffff" stroke="#d6d6de"/>
+    <text x="22" y="34" class="box-t">FastAPI service</text>
+    <text x="22" y="55" class="box-s">Swap for the client's application</text>
+    <line x1="22" y1="70" x2="268" y2="70" stroke="#ececf1"/>
+    <text x="22" y="96"  class="li">JWT auth · per-user rows</text>
+    <text x="22" y="122" class="li">validation · pagination</text>
+    <text x="22" y="148" class="li">browser UI</text>
+    <text x="22" y="182" class="box-s">Same suite runs against staging:</text>
+    <text x="22" y="200" class="box-s" font-family="ui-monospace, SFMono-Regular, monospace">TASKFLOW_BASE_URL=…</text>
+  </g>
+
+  <!-- arrows -->
+  <line x1="348" y1="320" x2="430" y2="285" stroke="#8b8b96" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <line x1="348" y1="320" x2="430" y2="375" stroke="#8b8b96" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <line x1="744" y1="261" x2="826" y2="300" stroke="#8b8b96" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <line x1="744" y1="379" x2="826" y2="340" stroke="#8b8b96" stroke-width="1.4" marker-end="url(#arrow)"/>
+
+  <!-- CI band -->
+  <g transform="translate(56,472)">
+    <text class="tag" y="-10">CI GATE — RUNS ON EVERY PUSH AND PULL REQUEST</text>
+    <rect width="1068" height="168" rx="12" fill="#ffffff" stroke="#d6d6de"/>
+
+    <g transform="translate(28,28)">
+      <rect width="228" height="58" rx="9" fill="#f4f4f7" stroke="#e3e3e9"/>
+      <text x="18" y="25" class="box-t" font-size="14">ruff</text>
+      <text x="18" y="44" class="box-s">lint gate</text>
+    </g>
+    <g transform="translate(292,28)">
+      <rect width="228" height="58" rx="9" fill="#f4f4f7" stroke="#e3e3e9"/>
+      <text x="18" y="25" class="box-t" font-size="14">API matrix</text>
+      <text x="18" y="44" class="box-s">Python 3.11 · 3.12, parallel</text>
+    </g>
+    <g transform="translate(556,28)">
+      <rect width="228" height="58" rx="9" fill="#f4f4f7" stroke="#e3e3e9"/>
+      <text x="18" y="25" class="box-t" font-size="14">Browser job</text>
+      <text x="18" y="44" class="box-s">Chromium, headless</text>
+    </g>
+    <g transform="translate(820,28)">
+      <rect width="220" height="58" rx="9" fill="#eef3ee" stroke="#cfdccf"/>
+      <text x="18" y="25" class="box-t" font-size="14">Merge allowed</text>
+      <text x="18" y="44" class="box-s">only if all three pass</text>
+    </g>
+
+    <line x1="264" y1="57" x2="286" y2="57" stroke="#8b8b96" stroke-width="1.4" marker-end="url(#arrow)"/>
+    <line x1="528" y1="57" x2="550" y2="57" stroke="#8b8b96" stroke-width="1.4" marker-end="url(#arrow)"/>
+    <line x1="792" y1="57" x2="814" y2="57" stroke="#8b8b96" stroke-width="1.4" marker-end="url(#arrow)"/>
+
+    <line x1="28" y1="110" x2="1040" y2="110" stroke="#ececf1"/>
+    <text x="28" y="136" class="ci"><tspan font-weight="700">On failure the job uploads evidence, not just a red X:</tspan>  Playwright trace · screenshot · video · self-contained HTML report</text>
+    <text x="28" y="156" class="box-s">You debug from the artifact instead of re-running the pipeline hoping to see it again.</text>
+  </g>
+</svg>

@@ -1,0 +1,9 @@
+-r requirements.txt
+
+# Test stack
+pytest==8.4.2
+pytest-playwright==0.7.1
+pytest-xdist==3.8.0
+pytest-html==4.1.1
+httpx==0.28.1
+ruff==0.14.0

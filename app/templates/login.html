@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Sign in · TaskFlow{% endblock %}
+{% block body %}
+<section class="card" data-testid="login-card">
+  <h1>TaskFlow</h1>
+  <p class="muted">Sign in to your workspace.</p>
+
+  <form id="login-form" data-testid="login-form" novalidate>
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" autocomplete="username"
+           data-testid="email-input" required>
+
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password"
+           autocomplete="current-password" data-testid="password-input" required>
+
+    <button type="submit" data-testid="submit-login">Sign in</button>
+  </form>
+
+  <p class="error" data-testid="login-error" hidden></p>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/login.js"></script>{% endblock %}

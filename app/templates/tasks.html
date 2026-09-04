@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Tasks · TaskFlow{% endblock %}
+{% block body %}
+<header class="topbar">
+  <span data-testid="current-user"></span>
+  <button type="button" data-testid="logout">Sign out</button>
+</header>
+
+<section class="card">
+  <h1>Tasks</h1>
+
+  <form id="new-task-form" data-testid="new-task-form" novalidate>
+    <input name="title" data-testid="task-title-input" placeholder="What needs doing?"
+           maxlength="140" required>
+    <select name="priority" data-testid="task-priority-select">
+      <option value="low">Low</option>
+      <option value="normal" selected>Normal</option>
+      <option value="high">High</option>
+    </select>
+    <button type="submit" data-testid="add-task">Add</button>
+  </form>
+
+  <p class="error" data-testid="task-error" hidden></p>
+
+  <p class="muted" data-testid="empty-state" hidden>No tasks yet.</p>
+  <ul id="task-list" data-testid="task-list"></ul>
+  <p class="muted"><span data-testid="open-count">0</span> open</p>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/tasks.js"></script>{% endblock %}
