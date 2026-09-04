@@ -23,6 +23,14 @@ that matters: a suite people don't trust gets switched off within a month.
 
 ![Test architecture](docs/architecture.png)
 
+### Every push runs it
+
+![CI run](docs/ci-run.png)
+
+Four jobs, 57 seconds, three artifacts. The run above is public — you can open
+it and check the numbers in this README yourself rather than taking my word
+for them.
+
 ---
 
 ## What is here
