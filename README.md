@@ -1,5 +1,7 @@
 # End-to-End Test Automation — Reference Implementation
 
+[![tests](https://github.com/berkaysahin1/qa-automation-showcase/actions/workflows/ci.yml/badge.svg)](https://github.com/berkaysahin1/qa-automation-showcase/actions/workflows/ci.yml)
+
 A complete, runnable test suite for a small web service: **50 tests covering the
 HTTP API and the browser UI, running in ~6 seconds, wired into GitHub Actions so
 a broken build never reaches `main`.**
